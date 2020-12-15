@@ -1,5 +1,4 @@
 ﻿//// Learn more about F# at http://fsharp.org
-
 //open System
 
 //[<EntryPoint>]
@@ -7,7 +6,6 @@
 //    printfn "Hello World from F#!"
 //    0 // return an integer exit code
 // Learn more about F# at http://fsharp.org
-
 open System
 
 open TwitterEngine
@@ -36,7 +34,7 @@ open System.Collections.Generic
 let system = System.create "system" (Configuration.defaultConfig())
 let twitterEngine=spawn system "TwitterEngine" Engine
 
-type Londa = {
+type Group = {
     Name: string
     Age: int
 }
@@ -125,7 +123,7 @@ let loginUser (req: HttpRequest) =
         // OK "You're good!"
         handShake ws
     else
-        OK "maa chuda!"
+        OK "password not authenticated!"
 
 // let rest resourceName (resource: 'a) =
 //   let resourcePath = "/" + resourceName
@@ -133,17 +131,17 @@ let loginUser (req: HttpRequest) =
 //   path resourcePath >=> GET >=> getAll
 
 
-let londa = {
-    Name="Akshay Kumar"
+let group1 = {
+    Name="Kratika"
     Age=25
 }
 
-let dusralonda = {
-    Name="Akshay Kumar"
+let group2 = {
+    Name="Shri"
     Age=25
 }
 
-let londe = [|londa; dusralonda|]
+let Group = [|group1; group2|]
 
 let app =
     choose
