@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "qPWW2ZUG//2zeZQMyRbCfcbOPVSfb+nkLKLYrZ86tt13A4OzXhuy6oN2r4pa1tLHhRWiM2iMEzdMH4iGsLxEKw==",
+  "success": true,
+  "projectFilePath": "C:\\Study\\SEM 2\\DOS\\Projects\\SampleServer4.2\\SampleServer4.2\\SampleServer4.2.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\shris\\.nuget\\packages\\fsharp.core\\4.7.2\\fsharp.core.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}
