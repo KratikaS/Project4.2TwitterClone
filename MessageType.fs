@@ -1,15 +1,21 @@
 ﻿module MessageType
 
 open System
-open Akka.Actor
-open Akka.FSharp
+//open Akka.Actor
+//open Akka.FSharp
 open System.Collections.Generic
-
 type Tweet=
     {
+        Type:string
+        user:string
         tweetText : String;
         HashTag : List<String>;
-        Mentions : HashSet<IActorRef>;
+        Mentions : List<String>;
+    }
+type SocketConnectionObject=
+    {
+        Type:string
+        user:string
     }
 type SampleObject=
     {
@@ -17,26 +23,28 @@ type SampleObject=
         val1:String;
         val2:String;
     }
+type SampleResponseType=
+    {
+        msg:string
+    }
 type TweeterEngine =
-    |InitializeValues of int *IActorRef
     |StartTimers
     |Sample of String
-    |Register of IActorRef * int
-    |TweetMsg of IActorRef * Tweet * int * IActorRef
-    |Subscribe of int
-    |QuerySubs of int *IActorRef
-    |QueryTag of String * int *IActorRef
-    |QueryMentions of IActorRef * int * int *IActorRef
-    |Login
-    |Logout
-    |SubscriptionDone of IActorRef
+    |Register of String
+    |TweetMsg of Tweet
+    |QuerySubs of string
+    |QueryTag of string
+    |QueryMentions of string
+    |Login of string
+    |Logout of string
     |Simulate
     |GetSubscriberRanksInfo
-    |Retweet of int * int *IActorRef * IActorRef
+    |Retweet of string * string 
     |PrintRetweet of Tweet * int * int
-    |LiveFeed of Tweet * IActorRef
     |PrintLive of string 
     |PrintQueryTag of string
     |PrintQueryMention of  string
     |PrintQuerySubs 
+    |Subscribe of string * string
+    |AllTweets
     |Done

@@ -56,3 +56,11 @@ C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp
 C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\MathNet.Numerics.dll
 C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Json.Net.dll
+C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.dll
+C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.WebUtilities.dll
+C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
+C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Study\SEM 2\DOS\Projects\SampleServer4.2\SampleServer4.2\bin\Debug\netcoreapp3.1\Microsoft.Net.Http.Headers.dll
