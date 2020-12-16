@@ -31,7 +31,9 @@ printfn "%s" tempObjectBytes
 let encodedData = Encoding.UTF8.GetBytes(tempObjectBytes)
 let buffer =  new ArraySegment<Byte>(encodedData,0,encodedData.Length)
 let xt = webSocket.SendAsync(buffer,WebSocketMessageType.Text,true,CancellationToken.None)
-let responseTsk = httpclient.GetAsync("http://localhost:8080/Register/user1")
+
+
+let responseTsk = httpclient.GetAsync("http://localhost:8080/Register/"+username)
 while responseTsk.IsCompleted = false do
     ()
 let responseJson = responseTsk.Result
@@ -78,7 +80,8 @@ async{
         //printfn "task complete"
         //printfn "byte count%i" rcvTsk.Result.Count
         let response = Encoding.ASCII.GetString(rcvBuffer.Array,0,rcvTsk.Result.Count)
-        printfn "this is new %s" response
+        if(response<>"") then
+            printfn "this is new %s" response
         //webSocket.ReceiveAsync(rcvBuffer,CancellationToken.None)
 }|>Async.Start
 
@@ -107,13 +110,9 @@ while whileFlg do
     printfn "5. Query mention"
     printfn "6. Subscribe"
     printfn "7. Exit"
-    
-    printfn "8. Listen to live feed"
     let userInput = System.Console.ReadLine();
     
     let inputInt = userInput |>int
-    //let x = Some(int32(userInput)) |>ignore
-    printfn "%i" inputInt
     match inputInt with
             |1 -> 
                 printfn "Enter the text you want to Tweet"
@@ -222,9 +221,11 @@ while whileFlg do
                 let jsonStr = System.Text.Encoding.Default.GetString(byteArray.Result);
                 let responseObj = JsonConvert.DeserializeObject<SampleResponseType>(jsonStr)
                 printfn "response is %A" responseObj
-            |7->
-                printfn "write code to exit"  
+            |7-> 
                 whileFlg <- false 
+                let responseTsk = httpclient.GetAsync("http://localhost:8080/Logout/"+username)
+                while responseTsk.IsCompleted do
+                    ()
                 let tsk = webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure,"Close",CancellationToken.None)
                 while tsk.IsCompleted do
                     ()

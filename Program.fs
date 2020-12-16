@@ -70,7 +70,6 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
       // the last element is the FIN byte, explained later
       
       | (Text, data, true) ->
-        printfn "jdfvbjdsbsjdhvbjdsbvjdsbshdbvjshbvjdb"
         // the message can be converted to a string
         let str = UTF8.toString data
         let msgObject = JsonConvert.DeserializeObject<Tweet>(str)
@@ -78,7 +77,8 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
         let Type = msgObject.Type
         match Type with
         |"Connection"->
-            connectionManager.Add(msgObject.user,webSocket)
+            if connectionManager.ContainsKey(msgObject.user) = false then
+                connectionManager.Add(msgObject.user,webSocket)
         |"Tweet"->
             let subsListTsk = twitterEngine<?TweetMsg(msgObject)
             let responseList = Async.RunSynchronously(subsListTsk,10000)
@@ -180,6 +180,10 @@ let group2 = {
     Name="Shri"
     Age=25
 }
+let LogoutUser = 
+    fun(user)->
+        connectionManager.Remove(user)
+        OK "Logout Successful"
 let MentionsQuery=
     fun(mention)->
         let tsk =twitterEngine<?QueryMentions(mention)
@@ -208,7 +212,7 @@ let  GetAlltweets =
     fun(s)->
         let tsk =twitterEngine<?AllTweets
         let response = Async.RunSynchronously(tsk,10000)
-        printfn "this is the responsesdfsdf %A" response
+        //printfn "this is the responsesdfsdf %A" response
         let responseJson = JsonConvert.SerializeObject(response)
         //printfn "this is json string %s" responseJson 
         OK responseJson
@@ -218,16 +222,14 @@ let SubscribeApi=
         let response = Async.RunSynchronously(tsk,10000)
         let reponseJson = {msg=response}
         let response = JsonConvert.SerializeObject(reponseJson)
-        printfn "this is json string %s" response 
+        //printfn "this is json string %s" response 
         OK response
 let Register =
     fun (a) ->
-        printfn "%s" (a.ToString())
         let tsk = twitterEngine<?Register(a.ToString())
         let response = Async.RunSynchronously(tsk,10000)
         let reponseJson = {msg=response}
         let response = JsonConvert.SerializeObject(reponseJson)
-        printfn "this is json string %s" response 
         OK response
         //if(response = "Registration Successfull") then
         //    OK response
@@ -249,6 +251,7 @@ let app =
               pathScan "/QuerySubs/%s" QueryAllSubs
               pathScan "/hashTagQuery/%s" HashTagQuery
               pathScan "/mentionsQuery/%s" MentionsQuery
+              pathScan "/Logout/%s" LogoutUser
             ]
         //  POST >=> choose
         //    [ 
