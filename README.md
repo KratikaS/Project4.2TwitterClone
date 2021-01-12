@@ -9,3 +9,8 @@ The server and client are executed on different terminals as different process. 
 3. Twitter Engine: It helps in demonstrating the twitter functionality based on user inputs. The twitter engine is connected to the server here.
 
 The twitter engine demonstrates the following functionalities – register a user, tweet, retweet, query hashtag, query subscribers, query mentions (other users). The operations are selected based on the inputs given by the user.
+
+Video uploaded at the link:
+Project is explained in detail in the video uploaded at the given link.
+
+https://youtu.be/gLu_dGhBZP4
