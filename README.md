@@ -1,4 +1,4 @@
-# Project4.2 - Twitter API Part 2
+# Twitter Engine Simulator using F#
 The aim of this project is to develop a twitter clone and demonstrate it using a client simulator. This is implemented using a server and client model. 
 We have used WebSockets and JSON based API to establish server client connection. We are using Suave library to implement sockets. 
 The server and client are executed on different terminals as different process. The structure is divided into three parts:
